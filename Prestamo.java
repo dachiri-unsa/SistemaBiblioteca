@@ -15,7 +15,7 @@ public class Prestamo {
             System.out.println("Ingresar isbn del libro: ");
             int isbn = sc.nextInt();
             sc.nextLine();
-            System.out.println("Ingresar id del usuario que lo comprar: ");
+            System.out.println("Ingresar id del usuario que lo compra: ");
             int id = sc.nextInt();
             sc.nextLine();
 
@@ -33,7 +33,7 @@ public class Prestamo {
             if (libro == null){
                 System.out.println("ISBN del libro no valido. Vuelva a ingresar.");
             }
-            else if (libro.isDisponible() == false){
+            else if (!libro.isDisponible()){
                 System.out.println("El libro seleccionado no esta disponible, por favor vuelva a ingresar.");
                 libro = null;
             }
@@ -68,7 +68,7 @@ public class Prestamo {
         return activo;
     }
     public void setActivo() {
-        if (activo == true){ 
+        if (activo){
             activo = false;
             libro.setDisponible(false);
         }
@@ -80,7 +80,7 @@ public class Prestamo {
 
     public String toString(){
         String string_activo;
-        if (activo == true) {string_activo = "Activo";}
+        if (activo) {string_activo = "Activo";}
         else {string_activo = "No activo";}
         return string_activo+". Usuario: "+usuario.getNombres()+"("+usuario.getId_usuario()+"). Libro: "+libro.getTitulo()+"("+libro.getIsbn()+")";
     }
@@ -93,7 +93,7 @@ public class Prestamo {
             sc.nextLine();
             for (Prestamo p : lista) {
                 if (p.getId_prestamo() == id){
-                    if (p.isActivo() == true) {
+                    if (p.isActivo()) {
                         p.setActivo();
                         p.getlibro().setDisponible(true);
                         bucle = false;
@@ -103,7 +103,7 @@ public class Prestamo {
                     }
                 }
             }
-            if (bucle == true) {
+            if (bucle) {
                 System.out.println("No se pudo encontrar el ID del prestamo.");
             }
             
@@ -119,7 +119,7 @@ public class Prestamo {
             }
         }
         else {
-            System.out.println("Aun no tienes Prestamos registrados, porfavor registrar uno antes.");
+            System.out.println("Aun no tienes prestamos registrados, porfavor registrar uno antes.");
         }
     }
 }

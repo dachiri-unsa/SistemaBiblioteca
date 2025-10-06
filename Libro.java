@@ -39,7 +39,7 @@ public class Libro {
 
     public String toString() {
         String string_disponible;
-        if (disponible == true) {string_disponible = "Disponible";}
+        if (disponible) {string_disponible = "Disponible";}
         else {string_disponible = "No disponible";}
 
         return string_disponible+". "+titulo+".("+autor+") ISBN: "+isbn;
@@ -56,28 +56,31 @@ public class Libro {
             System.out.println("Aun no tienes Libros registrados, porfavor registrar uno antes.");
         }
     }
-    public static void mostrarLibrosDisponibles(ArrayList<Libro> lista) {
-        if (lista.isEmpty() == true){
-            System.out.println("Aun no tienes Libros registrados, porfavor registrar uno antes.");
-        }
-        else if(Libro.isLibroDisponible(lista) == false) {
-            System.out.println("No hay libros disponibles en esta lista.");
-        }
-        else {
-            System.out.println("Lista de libros disponibles: ");
-            for (Libro l : lista){
-                if (l.isDisponible() == true){
-                    System.out.println("-"+l);
-                }
-            }
-        }
-    }
+
     public static boolean isLibroDisponible(ArrayList<Libro> lista_libros){
         for (Libro l : lista_libros) {
-            if (l.isDisponible() == true){
+            if (l.isDisponible()){
                 return true;
             }
         }
         return false;
     }
+
+    public static void mostrarLibrosDisponibles(ArrayList<Libro> lista) {
+        if (lista.isEmpty()){
+            System.out.println("Aun no tienes Libros registrados, porfavor registrar uno antes.");
+        }
+        else if(!Libro.isLibroDisponible(lista)) {
+            System.out.println("No hay libros disponibles en esta lista.");
+        }
+        else {
+            System.out.println("Lista de libros disponibles: ");
+            for (Libro l : lista){
+                if (l.isDisponible()){
+                    System.out.println("-"+l);
+                }
+            }
+        }
+    }
+
 }

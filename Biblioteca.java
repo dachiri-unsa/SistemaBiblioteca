@@ -6,23 +6,23 @@ public class Biblioteca {
     private ArrayList<Libro> lista_libros;
     private ArrayList<Usuario> lista_usuarios;
     private ArrayList<Prestamo> lista_prestamos;
-    private boolean seccionActiva;
+    private boolean sesionActiva;
 
     public Biblioteca() {
         this.sc = new Scanner(System.in);
         this.lista_libros = new ArrayList<>();
         this.lista_usuarios = new ArrayList<>();
         this.lista_prestamos = new ArrayList<>();
-        this.seccionActiva = true;
+        this.sesionActiva = true;
     }
     public char bienvenida() {
         System.out.println("Bienvenido al sistema de gestion de biblioteca");
         System.out.println("¿Deseas comenzar? (s/n)");
-        return sc.nextLine().charAt(0);
+        return sc.next().charAt(0);
     }
 
     public void iniciar(){
-        while(seccionActiva) {
+        while(sesionActiva) {
             System.out.println("--------------------------------");
             System.out.println("---------MENU PRINCIPAL---------");
             System.out.println("Seleccione una opcion:");
@@ -38,11 +38,11 @@ public class Biblioteca {
                     switch (seleccion_1) {
                         case "1":
                             lista_usuarios.add(new Usuario());
-                            System.out.println("Se logro ingresar el nuevo usuario con exito!.");
+                            System.out.println("Se logró ingresar el nuevo usuario con éxito!.");
                             break;
                         case "2":
                             lista_libros.add(new Libro());
-                            System.out.println("Se logro ingresar el nuevo libro con exito!.");
+                            System.out.println("Se logró ingresar el nuevo libro con éxito!.");
                             break;
                         case "3":
                             break;
@@ -75,13 +75,13 @@ public class Biblioteca {
                     }
                     break;
                 case "3":
-                    if (lista_libros.isEmpty()== true) {
+                    if (lista_libros.isEmpty()) {
                         System.out.println("Lista de libros vacia. Agregar almenos uno antes de seguir.");
                     }
-                    else if (Libro.isLibroDisponible(lista_libros) == false) {
+                    else if (!Libro.isLibroDisponible(lista_libros)) {
                         System.out.println("No hay ningun libro disponible en la lista. No es posible realizar un prestamo.");
                     }
-                    else if (lista_usuarios.isEmpty()==true){
+                    else if (lista_usuarios.isEmpty()){
                         System.out.println("Lista de usuarios vacia. Agregar almenos uno antes de seguir");
                     }
                     else {
@@ -96,7 +96,7 @@ public class Biblioteca {
                     Libro.mostrarLibrosDisponibles(lista_libros);
                     break;
                 case "0":
-                    seccionActiva = false;
+                    sesionActiva = false;
                     despedida();
                     break;
                 default:
