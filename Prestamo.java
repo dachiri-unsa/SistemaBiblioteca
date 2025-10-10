@@ -119,7 +119,7 @@ public class Prestamo {
             }
         }
         else {
-            System.out.println("Aun no tienes prestamos registrados, porfavor registrar uno antes.");
+            System.out.println("Aún no tienes prestamos registrados, porfavor registrar uno antes.");
         }
     }
 }

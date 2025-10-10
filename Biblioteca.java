@@ -22,11 +22,12 @@ public class Biblioteca {
     }
 
     public void iniciar(){
+        sc.nextLine();
         while(sesionActiva) {
             System.out.println("--------------------------------");
             System.out.println("---------MENU PRINCIPAL---------");
             System.out.println("Seleccione una opcion:");
-            System.out.println("1)Agregar datos\n2)Mostrar base de datos\n3)Realizar un prestado\n4)Devolver libro\n5)verificar disponibilidad de un libro\n0)Cerrar");
+            System.out.println("1)Agregar datos\n2)Mostrar base de datos\n3)Realizar un prestamo\n4)Devolver libro\n5)Verificar disponibilidad de un libro\n0)Cerrar");
             String seleccion = sc.nextLine();
             switch (seleccion) {
                 case "1":
@@ -37,11 +38,11 @@ public class Biblioteca {
                     String seleccion_1 = sc.nextLine();
                     switch (seleccion_1) {
                         case "1":
-                            lista_usuarios.add(new Usuario());
+                            lista_usuarios.add(new Usuario(sc));
                             System.out.println("Se logró ingresar el nuevo usuario con éxito!.");
                             break;
                         case "2":
-                            lista_libros.add(new Libro());
+                            lista_libros.add(new Libro(sc));
                             System.out.println("Se logró ingresar el nuevo libro con éxito!.");
                             break;
                         case "3":
@@ -79,14 +80,14 @@ public class Biblioteca {
                         System.out.println("Lista de libros vacia. Agregar almenos uno antes de seguir.");
                     }
                     else if (!Libro.isLibroDisponible(lista_libros)) {
-                        System.out.println("No hay ningun libro disponible en la lista. No es posible realizar un prestamo.");
+                        System.out.println("No hay ningún libro disponible en la lista. No es posible realizar un préstamo.");
                     }
                     else if (lista_usuarios.isEmpty()){
-                        System.out.println("Lista de usuarios vacia. Agregar almenos uno antes de seguir");
+                        System.out.println("Lista de usuarios vacía. Agregar al menos uno antes de seguir.");
                     }
                     else {
                         lista_prestamos.add(new Prestamo(sc, lista_usuarios, lista_libros));
-                        System.out.println("Se logro hacer el prestamo con exito.");
+                        System.out.println("Se logro hacer el préstamo con éxito.");
                     }
                     break;
                 case "4":

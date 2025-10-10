@@ -71,7 +71,7 @@ public class Libro {
             System.out.println("Aun no tienes Libros registrados, porfavor registrar uno antes.");
         }
         else if(!Libro.isLibroDisponible(lista)) {
-            System.out.println("No hay libros disponibles en esta lista.");
+            System.out.println("Lo sentimos ya no hay libros disponibles en esta lista.");
         }
         else {
             System.out.println("Lista de libros disponibles: ");
