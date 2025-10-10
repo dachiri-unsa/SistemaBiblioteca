@@ -36,7 +36,7 @@ public class Usuario {
             }
         }
         else {
-            System.out.println("Aun no tienes Usuarios registrados, porfavor registrar uno antes.");
+            System.out.println("Aún no tienes Usuarios registrados, porfavor registrar uno antes.");
         }
     }
 }
